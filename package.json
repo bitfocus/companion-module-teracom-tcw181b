@@ -1,0 +1,31 @@
+{
+  "name": "teracom-tcw181b",
+	"version": "0.0.1",
+	"api_version": "0.1.2",
+	"description": "Teracom TCW181b Relay",
+	"keywords": [
+		"Relay"
+	],
+	"manufacturer": "Teracom TCW181b Relay",
+	"product": "TCW181b",
+	"shortname": "TCW181b",
+	"homepage": "https://github.com/bitfocus/companion-module-teracom-tcw181b#readme",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bitfocus/companion-module-teracom-tcw181b.git"
+	},
+	"author": "Andreas H. Thomsen <mc-hauge@hotmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/bitfocus/companion-module-teracom-tcw181b/issues"
+	},
+	"dependencies": {
+		"got": "^6.7.1",
+		"lodash": "^4.17.19",
+		"xml2js": "^0.4.22"
+	}
+}
