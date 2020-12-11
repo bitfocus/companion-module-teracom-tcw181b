@@ -105,6 +105,7 @@ exports.initAPI = function () {
 					changes.add('digitalInputState');
 				}
 
+				data.startup = false;
 				this.data = data;
 				changes.forEach(change => this.checkFeedbacks(change));
 

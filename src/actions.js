@@ -86,7 +86,6 @@ exports.executeAction = function(action) {
 		}	
 
 		this.debug('sending ',message,"to",conf.host);
-		console.log('HTTP Send: ' + message);
 
 		self.system.emit('rest_get', message, function (err, result) {
 			if (err !== null) {

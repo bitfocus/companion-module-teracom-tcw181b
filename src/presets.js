@@ -30,6 +30,14 @@ exports.initPresets = function() {
 				options: {
 					action: RELAY_NR[input].id
 				}
+			}],
+			feedbacks: [{
+				type: 'relayState',	
+				options: {
+					relay: RELAY_NR[input].id,
+					fg: this.rgb(255, 255, 255),
+					bg: this.rgb(255, 0, 0)
+				}
 			}]
 		});
 	}		
@@ -49,6 +57,14 @@ exports.initPresets = function() {
 				action: 'relay_off', 
 				options: {
 					action: RELAY_NR[input].id
+				}
+			}],
+			feedbacks: [{
+				type: 'relayState',	
+				options: {
+					relay: RELAY_NR[input].id,
+					fg: this.rgb(255, 255, 255),
+					bg: this.rgb(255, 0, 0)
 				}
 			}]
 		});
@@ -70,6 +86,14 @@ exports.initPresets = function() {
 				options: {
 					action: RELAY_NR[input].id
 				}
+			}],
+			feedbacks: [{
+				type: 'relayState',	
+				options: {
+					relay: RELAY_NR[input].id,
+					fg: this.rgb(255, 255, 255),
+					bg: this.rgb(255, 0, 0)
+				}
 			}]
 		});
 	}		
@@ -90,9 +114,34 @@ exports.initPresets = function() {
 				options: {
 					action: RELAY_NR[input].id
 				}
+			}],
+			feedbacks: [{
+				type: 'relayState',	
+				options: {
+					relay: RELAY_NR[input].id,
+					fg: this.rgb(255, 255, 255),
+					bg: this.rgb(255, 0, 0)
+				}
 			}]
 		});
 	}		
+
+	presets.push({
+		category: 'Digital Input',
+		label: 'Digital Input State',
+		bank: {
+			style: 'text',
+			text: 'Digital Input',
+			size: pstSize,
+			color: '16777215',
+			bgcolor: this.rgb(0,0,0)
+		},
+		feedbacks: [{
+			type: 'digitalInputState',	
+			fg: this.rgb(255, 255, 255),
+			bg: this.rgb(0, 255, 0)
+		}]
+	});
 
 	this.setPresetDefinitions(presets);
 };

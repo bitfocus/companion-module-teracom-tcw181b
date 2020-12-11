@@ -2,9 +2,9 @@ const instance_skel = require('../../../instance_skel');
 const { executeAction, getActions } = require('./actions');
 const { initAPI } = require('./api');
 const { getConfigFields } = require('./config');
-const { initPresets } = require('./presets');
-const { updateVariableDefinitions } = require('./variables');
 const { executeFeedback, initFeedbacks } = require('./feedback');
+const { updateVariableDefinitions } = require('./variables');
+const { initPresets } = require('./presets');
 
 /**
  * Companion instance class for Teracom TCW181b
@@ -15,6 +15,7 @@ class TeracomInstance extends instance_skel {
 
 		// Default instance state
 		this.data = {
+			startup: true,
 			Device: {
 				Device: '',
 				ID: '',
@@ -54,7 +55,7 @@ class TeracomInstance extends instance_skel {
 			}
 		};
 		
-		this.config.host = this.config.host;
+		this.config.host = this.config.host || '';
 		this.config.httpPort = this.config.httpPort || 80;
 		this.config.apiPollInterval = this.config.apiPollInterval !== undefined ? this.config.apiPollInterval : 250;
 		this.config.username = this.config.username;
@@ -88,6 +89,9 @@ class TeracomInstance extends instance_skel {
 
 	// Instance removal clean up
 	destroy() {
+		if (this.socket !== undefined) {
+			this.socket.destroy();
+		}
 
 		if (this.pollAPI) {
 			clearInterval(this.pollAPI);
