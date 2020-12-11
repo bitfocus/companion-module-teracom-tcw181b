@@ -4,6 +4,7 @@ const { initAPI } = require('./api');
 const { getConfigFields } = require('./config');
 const { initPresets } = require('./presets');
 const { updateVariableDefinitions } = require('./variables');
+const { executeFeedback, initFeedbacks } = require('./feedback');
 
 /**
  * Companion instance class for Teracom TCW181b
@@ -14,37 +15,43 @@ class TeracomInstance extends instance_skel {
 
 		// Default instance state
 		this.data = {
-			Device: '',
-			ID: '',
-			Hostname: '',
-			FW: '',
-			DigitalInputDescription: '',
-			DigitalInput: 'OPEN',
-			DinAlarm: 0,
-			Relay1Description: '',
-			Relay1: '',
-			pw1: 1.0,
-			Relay2Description: '',
-			Relay2: '',
-			pw2: 1.0,
-			Relay3Description: '',
-			Relay3: '',
-			pw3: 1.0,
-			Relay4Description: '',
-			Relay4: '',
-			pw4: 1.0,
-			Relay5Description: '',
-			Relay5: '',
-			pw5: 1.0,
-			Relay6Description: '',
-			Relay6: '',
-			pw6: 1.0,
-			Relay7Description: '',
-			Relay7: '',
-			pw7: 1.0,
-			Relay8Description: '',
-			Relay8: '',
-			pw8: 1.0,
+			Device: {
+				Device: '',
+				ID: '',
+				Hostname: '',
+				FW: '',	
+			},
+			Digital:{
+				DigitalInputDescription: '',
+				DigitalInput: 'OPEN',
+				DinAlarm: 0,
+			},
+			Relay: {
+				Relay1Description: '',
+				Relay1: 'OFF',
+				pw1: 1.0,
+				Relay2Description: '',
+				Relay2: 'OFF',
+				pw2: 1.0,
+				Relay3Description: '',
+				Relay3: 'OFF',
+				pw3: 1.0,
+				Relay4Description: '',
+				Relay4: 'OFF',
+				pw4: 1.0,
+				Relay5Description: '',
+				Relay5: 'OFF',
+				pw5: 1.0,
+				Relay6Description: '',
+				Relay6: 'OFF',
+				pw6: 1.0,
+				Relay7Description: '',
+				Relay7: 'OFF',
+				pw7: 1.0,
+				Relay8Description: '',
+				Relay8: 'OFF',
+				pw8: 1.0,	
+			}
 		};
 		
 		this.config.host = this.config.host;
@@ -59,7 +66,7 @@ class TeracomInstance extends instance_skel {
 	init() {
 		this.status(1, 'Connecting');
 		this.actions();
-		// this.init_feedbacks();
+		this.init_feedbacks();
 		initAPI.bind(this)();
 		initPresets.bind(this)();
 		this.updateVariableDefinitions();
@@ -69,7 +76,7 @@ class TeracomInstance extends instance_skel {
 	updateConfig(config) {
 		this.actions();
 		this.config = config;
-		// this.init_feedbacks();
+		this.init_feedbacks();
 		initAPI.bind(this)();
 		initPresets.bind(this)();
 	}
@@ -99,16 +106,16 @@ class TeracomInstance extends instance_skel {
 		executeAction.bind(this)(action);
 	}
 	
-	// // Set available feedback choices
-	// init_feedbacks() {
-	// 	const feedbacks = initFeedbacks.bind(this)();
-	// 	this.setFeedbackDefinitions(feedbacks);
-	// }
+	// Set available feedback choices
+	init_feedbacks() {
+		const feedbacks = initFeedbacks.bind(this)();
+		this.setFeedbackDefinitions(feedbacks);
+	}
 
-	// // Execute feedback
-	// feedback(feedback, bank) {
-	// 	return executeFeedback.bind(this)(feedback, bank);
-	// }
+	// Execute feedback
+	feedback(feedback, bank) {
+		return executeFeedback.bind(this)(feedback, bank);
+	}
 
 }
 

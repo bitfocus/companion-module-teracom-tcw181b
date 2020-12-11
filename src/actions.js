@@ -95,7 +95,6 @@ exports.executeAction = function(action) {
 			}
 			else {
 				this.status(self.STATUS_OK);
-				console.log("Result from REST: ", result);
 			}
 		});	
 	}

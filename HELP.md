@@ -41,5 +41,7 @@ https://github.com/bitfocus/companion-module-requests/files/4902623/tcw181b-cm-e
 * Relay_7_State
 * Relay_7_PW
 
-**Not implemented yet**
-* Get Relay Status (Feedback)
+**Suported Feedbacks**
+* Get Relay Status
+* Get Digital input Status 
+(this alows you to control something in companion via the digital input if used with the new Triger menu in companion 2.1.2 or higher)

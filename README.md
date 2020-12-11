@@ -6,5 +6,7 @@ See HELP.md and LICENSE
 * Includes all HTTP based functions in the API
 * Supports Status Varibles on the whole setup
 
-**To Do**
-* Need to add Feddbacks
+**V1.0.0**
+* First release
+* Added Feedbacks
+* Updated / New presets with feedbacks
