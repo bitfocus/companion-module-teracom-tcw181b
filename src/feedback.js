@@ -35,15 +35,22 @@ exports.initFeedbacks = function() {
 
 	const backgroundColorRed = {
 		type: 'colorpicker',
-		label: 'Background color',
-		id: 'bg',
+		label: 'Background color ON',
+		id: 'bg1',
 		default: this.rgb(255, 0, 0)
+	};
+
+	const backgroundColorOrange = {
+		type: 'colorpicker',
+		label: 'Background color Pulse',
+		id: 'bg2',
+		default: this.rgb(255, 102, 0)
 	};
 
 	feedbacks.relayState = {
 		label: 'Relay - Output State',
 		description: 'Indicate if a Relay is ON or OFF',
-		options: [relay, foregroundColor, backgroundColorRed]
+		options: [relay, foregroundColor, backgroundColorRed, backgroundColorOrange]
 	};
 
 	feedbacks.digitalInputState = {
@@ -61,49 +68,73 @@ exports.executeFeedback = function(feedback, bank) {
 		switch (feedback.options.relay) {
 			case '1':
 				if (this.data.Relay.Relay1 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay1 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 
 			case '2':
 				if (this.data.Relay.Relay2 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay2 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 
 			case '3':
 				if (this.data.Relay.Relay3 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay3 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 
 			case '4':
 				if (this.data.Relay.Relay4 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay4 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 
 			case '5':
 				if (this.data.Relay.Relay5 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay5 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 
 			case '6':
 				if (this.data.Relay.Relay6 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay6 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 
 			case '7':
 				if (this.data.Relay.Relay7 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay7 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 
 			case '8':
 				if (this.data.Relay.Relay8 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg };				
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 };				
+				}
+				else if (this.data.Relay.Relay8 === 'in pulse') {
+					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 };				
 				}
 				break;
 																			

@@ -20,7 +20,7 @@ exports.getConfigFields = function () {
 			id: 'info',
 			width: 12,
 			label: 'Information',
-			value: 'Please fill out Username and Password, if HTTP authentication is enabled on your device. Otherwise please leave it empty'
+			value: 'Please fill out Username and Password, if you have set XML/HTTP API authentication to enabled on your device. Otherwise please leave it empty (default is OFF)'
 		},
 		{
 			type: 'textinput',
@@ -39,9 +39,11 @@ exports.getConfigFields = function () {
 		{
 			type: 'textinput',
 			id: 'apiPollInterval',
-			label: 'API Polling interval (ms) (default: 250, min: 100, 0 for disabled)',
+			label: 'API Polling interval (ms) (default: 500, min: 250)',
 			width: 12,
-			default: 250,
+			default: 500,
+			min: 250,
+			max: 10000,
 			regex: this.REGEX_NUMBER
 		},
 		{

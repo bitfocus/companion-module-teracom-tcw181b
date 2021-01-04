@@ -79,21 +79,21 @@ exports.executeAction = function(action) {
 
 	if (cmd !== undefined) {
 		if (conf.username != '' || conf.password != '') {
-			var message = 'http://' + conf.host + ':' + conf.port + '/status.xml?a=' + conf.username + ":" + conf.password + cmd;
+			var message = 'http://' + conf.host + ':' + conf.httpPort + '/status.xml?a=' + conf.username + ":" + conf.password + cmd;
 		}
 		else {
-			var message = 'http://' + conf.host + ':' + conf.port + '/status.xml' + cmd;
+			var message = 'http://' + conf.host + ':' + conf.httpPort + '/status.xml' + cmd;
 		}	
 
 		this.debug('sending ',message,"to",conf.host);
 
 		self.system.emit('rest_get', message, function (err, result) {
 			if (err !== null) {
-				this.log('error', 'HTTP GET Request failed (' + result.error.code + ')');
-				this.status(self.STATUS_ERROR, result.error.code);
+				self.log('error', 'HTTP GET Request failed (' + result.error.code + ')');
+				self.status(self.STATUS_ERROR, result.error.code);
 			}
 			else {
-				this.status(self.STATUS_OK);
+				self.status(self.STATUS_OK);
 			}
 		});	
 	}
