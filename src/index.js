@@ -57,6 +57,7 @@ class TeracomInstance extends instance_skel {
 		
 		this.config.host = this.config.host || '';
 		this.config.httpPort = this.config.httpPort || 80;
+		this.config.api_auth = this.config.api_auth || false;
 		this.config.apiPollInterval = this.config.apiPollInterval !== undefined ? this.config.apiPollInterval : 500;
 		this.config.username = this.config.username;
 		this.config.password = this.config.password;

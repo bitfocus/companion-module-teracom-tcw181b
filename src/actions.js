@@ -78,7 +78,8 @@ exports.executeAction = function(action) {
 	}	
 
 	if (cmd !== undefined) {
-		if (conf.username != '' || conf.password != '') {
+		if (conf.api_auth == true) {
+		// if (conf.username != '' || conf.password != '') {
 			var message = 'http://' + conf.host + ':' + conf.httpPort + '/status.xml?a=' + conf.username + ":" + conf.password + cmd;
 		}
 		else {
