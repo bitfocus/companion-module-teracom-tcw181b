@@ -6,8 +6,8 @@
 	"keywords": [
 		"Relay"
 	],
-	"manufacturer": "Teracom TCW181b Relay",
-	"product": "TCW181b",
+	"manufacturer": "Teracom",
+	"product": "TCW181b Relay",
 	"shortname": "TCW181b",
 	"homepage": "https://github.com/bitfocus/companion-module-teracom-tcw181b#readme",
 	"main": "src/index.js",
