@@ -1,12 +1,12 @@
-const got = require('got');
-const xml2js = require('xml2js');
-const _ = require('lodash');
+const got = require('got')
+const xml2js = require('xml2js')
+const _ = require('lodash')
 
 exports.initAPI = function () {
-	const parseXML = body => {
+	const parseXML = (body) => {
 		xml2js.parseString(body, (err, xml) => {
 			if (err) {
-				this.debug('info', JSON.stringify(err));
+				this.debug('info', JSON.stringify(err))
 				// this.checkFeedbacks('status');
 			} else {
 				const data = {
@@ -14,12 +14,12 @@ exports.initAPI = function () {
 						Device: xml.Monitor.Device[0],
 						ID: xml.Monitor.ID[0],
 						Hostname: xml.Monitor.Hostname[0],
-						FW: xml.Monitor.FW[0],	
+						FW: xml.Monitor.FW[0],
 					},
 					Digital: {
 						DigitalInputDescription: xml.Monitor.DigitalInputDescription[0],
 						DigitalInput: xml.Monitor.DigitalInput[0],
-						DinAlarm: xml.Monitor.DinAlarm[0],	
+						DinAlarm: xml.Monitor.DinAlarm[0],
 					},
 					Relay: {
 						Relay1Description: xml.Monitor.Relay1Description[0],
@@ -45,114 +45,114 @@ exports.initAPI = function () {
 						pw7: xml.Monitor.pw7[0],
 						Relay8Description: xml.Monitor.Relay8Description[0],
 						Relay8: xml.Monitor.Relay8[0],
-						pw8: xml.Monitor.pw8[0],	
-					}
-				};
+						pw8: xml.Monitor.pw8[0],
+					},
+				}
 
 				// Check for changes to update feedbacks
-				const changes = new Set([]);
+				const changes = new Set([])
 
 				// Check For Changes
 				if (!_.isEqual(data.Device, this.data.Device)) {
-					this.setVariable(`Device_Type`, data.Device.Device);
-					this.setVariable(`Device_ID`, data.Device.ID);
-					this.setVariable(`Device_Hostname`, data.Device.Hostname);
-					this.setVariable(`Device_FW`, data.Device.FW);
-				};
+					this.setVariable(`Device_Type`, data.Device.Device)
+					this.setVariable(`Device_ID`, data.Device.ID)
+					this.setVariable(`Device_Hostname`, data.Device.Hostname)
+					this.setVariable(`Device_FW`, data.Device.FW)
+				}
 
 				// Check For Changes
 				if (!_.isEqual(data.Digital, this.data.Digital)) {
-					this.setVariable(`Digital_IN_Name`, data.Digital.DigitalInputDescription);
-					this.setVariable(`Digital_IN_State`, data.Digital.DigitalInput);
-					this.setVariable(`Digital_IN_Alarm`, data.Digital.DinAlarm);
+					this.setVariable(`Digital_IN_Name`, data.Digital.DigitalInputDescription)
+					this.setVariable(`Digital_IN_State`, data.Digital.DigitalInput)
+					this.setVariable(`Digital_IN_Alarm`, data.Digital.DinAlarm)
 				}
 
 				// Check For Changes
 				if (!_.isEqual(data.Relay, this.data.Relay)) {
-					this.setVariable(`Relay_1_Name`, data.Relay.Relay1Description);
-					this.setVariable(`Relay_1_State`, data.Relay.Relay1);
-					this.setVariable(`Relay_1_PW`, data.Relay.pw1);
-					this.setVariable(`Relay_2_Name`, data.Relay.Relay2Description);
-					this.setVariable(`Relay_2_State`, data.Relay.Relay2);
-					this.setVariable(`Relay_2_PW`, data.Relay.pw2);
-					this.setVariable(`Relay_3_Name`, data.Relay.Relay3Description);
-					this.setVariable(`Relay_3_State`, data.Relay.Relay3);
-					this.setVariable(`Relay_3_PW`, data.Relay.pw3);
-					this.setVariable(`Relay_4_Name`, data.Relay.Relay4Description);
-					this.setVariable(`Relay_4_State`, data.Relay.Relay4);
-					this.setVariable(`Relay_4_PW`, data.Relay.pw4);
-					this.setVariable(`Relay_5_Name`, data.Relay.Relay5Description);
-					this.setVariable(`Relay_5_State`, data.Relay.Relay5);
-					this.setVariable(`Relay_5_PW`, data.Relay.pw5);
-					this.setVariable(`Relay_6_Name`, data.Relay.Relay6Description);
-					this.setVariable(`Relay_6_State`, data.Relay.Relay6);
-					this.setVariable(`Relay_6_PW`, data.Relay.pw6);
-					this.setVariable(`Relay_7_Name`, data.Relay.Relay7Description);
-					this.setVariable(`Relay_7_State`, data.Relay.Relay7);
-					this.setVariable(`Relay_7_PW`, data.Relay.pw7);
-					this.setVariable(`Relay_8_Name`, data.Relay.Relay8Description);
-					this.setVariable(`Relay_8_State`, data.Relay.Relay8);
-					this.setVariable(`Relay_8_PW`, data.Relay.pw8);
+					this.setVariable(`Relay_1_Name`, data.Relay.Relay1Description)
+					this.setVariable(`Relay_1_State`, data.Relay.Relay1)
+					this.setVariable(`Relay_1_PW`, data.Relay.pw1)
+					this.setVariable(`Relay_2_Name`, data.Relay.Relay2Description)
+					this.setVariable(`Relay_2_State`, data.Relay.Relay2)
+					this.setVariable(`Relay_2_PW`, data.Relay.pw2)
+					this.setVariable(`Relay_3_Name`, data.Relay.Relay3Description)
+					this.setVariable(`Relay_3_State`, data.Relay.Relay3)
+					this.setVariable(`Relay_3_PW`, data.Relay.pw3)
+					this.setVariable(`Relay_4_Name`, data.Relay.Relay4Description)
+					this.setVariable(`Relay_4_State`, data.Relay.Relay4)
+					this.setVariable(`Relay_4_PW`, data.Relay.pw4)
+					this.setVariable(`Relay_5_Name`, data.Relay.Relay5Description)
+					this.setVariable(`Relay_5_State`, data.Relay.Relay5)
+					this.setVariable(`Relay_5_PW`, data.Relay.pw5)
+					this.setVariable(`Relay_6_Name`, data.Relay.Relay6Description)
+					this.setVariable(`Relay_6_State`, data.Relay.Relay6)
+					this.setVariable(`Relay_6_PW`, data.Relay.pw6)
+					this.setVariable(`Relay_7_Name`, data.Relay.Relay7Description)
+					this.setVariable(`Relay_7_State`, data.Relay.Relay7)
+					this.setVariable(`Relay_7_PW`, data.Relay.pw7)
+					this.setVariable(`Relay_8_Name`, data.Relay.Relay8Description)
+					this.setVariable(`Relay_8_State`, data.Relay.Relay8)
+					this.setVariable(`Relay_8_PW`, data.Relay.pw8)
 				}
 
 				// Check Relay Feedbacks
 				if (!_.isEqual(data.Relay, this.data.Relay)) {
-					changes.add('relayState');
+					changes.add('relayState')
 				}
 
 				// Check Digital Input Feedbacks
 				if (!_.isEqual(data.Digital, this.data.Digital)) {
-					changes.add('digitalInputState');
+					changes.add('digitalInputState')
 				}
 
-				data.startup = false;
-				this.data = data;
-				changes.forEach(change => this.checkFeedbacks(change));
+				data.startup = false
+				this.data = data
+				changes.forEach((change) => this.checkFeedbacks(change))
 
 				// Update variable definitions
 				if (changes.size > 0) {
-					this.updateVariableDefinitions();
+					this.updateVariableDefinitions()
 				}
-				
 			}
-		});
-	};
+		})
+	}
 
 	const getStatus = () => {
-		var message = '';
+		var message = ''
 
 		// For sepecifiing a headder
 		const options = {
 			// headers: {
 			// 	Authorization: `Basic ${Buffer.from(this.config.username + ':' + this.config.password).toString('base64')}`
 			// }
-		};
+		}
 
 		// detect and use authendication if a password or username is present
 		if (this.config.username != '' || this.config.password != '') {
-			message = '?a=' + this.config.username + ':' + this.config.password;
+			message = '?a=' + this.config.username + ':' + this.config.password
 		}
 
-		got.get(`http://${this.config.host}:${this.config.httpPort || 80}/status.xml` + message, options)
-			.then(res => {
+		got
+			.get(`http://${this.config.host}:${this.config.httpPort || 80}/status.xml` + message, options)
+			.then((res) => {
 				if (res.statusCode === 200) {
-					this.status(this.STATE_OK);
-					this.debug('Connected');		
-					return parseXML(res.body);
+					this.status(this.STATE_OK)
+					this.debug('Connected')
+					return parseXML(res.body)
 				}
 			})
-			.catch(err => {
-				this.debug('Network error', err);
-				this.status(this.STATE_ERROR, err);
-				this.debug('Teracom API err:' + JSON.stringify(err));
-			});
-	};
+			.catch((err) => {
+				this.debug('Network error', err)
+				this.status(this.STATE_ERROR, err)
+				this.debug('Teracom API err:' + JSON.stringify(err))
+			})
+	}
 
 	if (this.pollAPI) {
-		clearInterval(this.pollAPI);
+		clearInterval(this.pollAPI)
 	}
 
 	if (this.config.apiPollInterval != 0) {
-		this.pollAPI = setInterval(getStatus, this.config.apiPollInterval < 100 ? 100 : this.config.apiPollInterval);
+		this.pollAPI = setInterval(getStatus, this.config.apiPollInterval < 100 ? 100 : this.config.apiPollInterval)
 	}
-};
+}
