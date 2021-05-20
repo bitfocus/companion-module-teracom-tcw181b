@@ -98,6 +98,7 @@ exports.initAPI = function () {
 				// Check Relay Feedbacks
 				if (!_.isEqual(data.Relay, this.data.Relay)) {
 					changes.add('relayState')
+					changes.add('relayPulse')
 				}
 
 				// Check Digital Input Feedbacks

@@ -18,44 +18,41 @@ exports.initFeedbacks = function () {
 		],
 	}
 
-	const foregroundColor = {
-		type: 'colorpicker',
-		label: 'Foreground color',
-		id: 'fg',
-		default: this.rgb(255, 255, 255),
-	}
-
-	const backgroundColorGreen = {
-		type: 'colorpicker',
-		label: 'Background color',
-		id: 'bg',
-		default: this.rgb(0, 255, 0),
-	}
-
-	const backgroundColorRed = {
-		type: 'colorpicker',
-		label: 'Background color ON',
-		id: 'bg1',
-		default: this.rgb(255, 0, 0),
-	}
-
-	const backgroundColorOrange = {
-		type: 'colorpicker',
-		label: 'Background color Pulse',
-		id: 'bg2',
-		default: this.rgb(255, 102, 0),
-	}
+	const fgColor = this.rgb(255, 255, 255)
+	const bgColorRed = this.rgb(255, 0, 0)
+	const bgColorGreen = this.rgb(0, 255, 0)
+	const bgColorOrange = this.rgb(255, 102, 0)
 
 	feedbacks.relayState = {
+		type: 'boolean',
 		label: 'Relay - Output State',
 		description: 'Indicate if a Relay is ON or OFF',
-		options: [relay, foregroundColor, backgroundColorRed, backgroundColorOrange],
+		options: [relay],
+		style: {
+			color: fgColor,
+			bgcolor: bgColorRed,
+		},
+	}
+
+	feedbacks.relayPulse = {
+		type: 'boolean',
+		label: 'Relay - Output Pulse',
+		description: 'Indicate if a Relay is Pulsing',
+		options: [relay],
+		style: {
+			color: fgColor,
+			bgcolor: bgColorOrange,
+		},
 	}
 
 	feedbacks.digitalInputState = {
+		type: 'boolean',
 		label: 'Digital - Input State',
 		description: 'Indicate if Digital input is OPEN or CLOSED',
-		options: [foregroundColor, backgroundColorGreen],
+		style: {
+			color: fgColor,
+			bgcolor: bgColorGreen,
+		},
 	}
 
 	return feedbacks
@@ -66,65 +63,102 @@ exports.executeFeedback = function (feedback, bank) {
 		switch (feedback.options.relay) {
 			case '1':
 				if (this.data.Relay.Relay1 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay1 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
 				}
 				break
 
 			case '2':
 				if (this.data.Relay.Relay2 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay2 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
 				}
 				break
 
 			case '3':
 				if (this.data.Relay.Relay3 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay3 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
 				}
 				break
 
 			case '4':
 				if (this.data.Relay.Relay4 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay4 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
 				}
 				break
 
 			case '5':
 				if (this.data.Relay.Relay5 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay5 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
 				}
 				break
 
 			case '6':
 				if (this.data.Relay.Relay6 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay6 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
 				}
 				break
 
 			case '7':
 				if (this.data.Relay.Relay7 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay7 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
 				}
 				break
 
 			case '8':
 				if (this.data.Relay.Relay8 === 'ON') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg1 }
-				} else if (this.data.Relay.Relay8 === 'in pulse') {
-					return { color: feedback.options.fg, bgcolor: feedback.options.bg2 }
+					return true
+				}
+				break
+
+			default:
+				break
+		}
+	} else if (feedback.type === 'relayPulse') {
+		switch (feedback.options.relay) {
+			case '1':
+				if (this.data.Relay.Relay1 === 'in pulse') {
+					return true
+				}
+				break
+
+			case '2':
+				if (this.data.Relay.Relay2 === 'in pulse') {
+					return true
+				}
+				break
+
+			case '3':
+				if (this.data.Relay.Relay3 === 'in pulse') {
+					return true
+				}
+				break
+
+			case '4':
+				if (this.data.Relay.Relay4 === 'in pulse') {
+					return true
+				}
+				break
+
+			case '5':
+				if (this.data.Relay.Relay5 === 'in pulse') {
+					return true
+				}
+				break
+
+			case '6':
+				if (this.data.Relay.Relay6 === 'in pulse') {
+					return true
+				}
+				break
+
+			case '7':
+				if (this.data.Relay.Relay7 === 'in pulse') {
+					return true
+				}
+				break
+
+			case '8':
+				if (this.data.Relay.Relay8 === 'in pulse') {
+					return true
 				}
 				break
 
@@ -133,7 +167,8 @@ exports.executeFeedback = function (feedback, bank) {
 		}
 	} else if (feedback.type === 'digitalInputState') {
 		if (this.data.Digital.DigitalInput === 'CLOSED') {
-			return { color: feedback.options.fg, bgcolor: feedback.options.bg }
+			return true
 		}
 	}
+	return false
 }

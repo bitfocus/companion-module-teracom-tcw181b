@@ -14,6 +14,11 @@ exports.initPresets = function () {
 		{ id: '8', label: 'Relay 8' },
 	]
 
+	const fgColor = this.rgb(255, 255, 255)
+	const bgColorRed = this.rgb(255, 0, 0)
+	const bgColorGreen = this.rgb(0, 255, 0)
+	const bgColorOrange = this.rgb(255, 102, 0)
+
 	for (var input in RELAY_NR) {
 		presets.push({
 			category: 'Relay ON',
@@ -38,8 +43,20 @@ exports.initPresets = function () {
 					type: 'relayState',
 					options: {
 						relay: RELAY_NR[input].id,
-						fg: this.rgb(255, 255, 255),
-						bg: this.rgb(255, 0, 0),
+					},
+					style: {
+						color: fgColor,
+						bgcolor: bgColorRed,
+					},
+				},
+				{
+					type: 'relayPulse',
+					options: {
+						relay: RELAY_NR[input].id,
+					},
+					style: {
+						color: fgColor,
+						bgcolor: bgColorOrange,
 					},
 				},
 			],
@@ -70,8 +87,20 @@ exports.initPresets = function () {
 					type: 'relayState',
 					options: {
 						relay: RELAY_NR[input].id,
-						fg: this.rgb(255, 255, 255),
-						bg: this.rgb(255, 0, 0),
+					},
+					style: {
+						color: fgColor,
+						bgcolor: bgColorRed,
+					},
+				},
+				{
+					type: 'relayPulse',
+					options: {
+						relay: RELAY_NR[input].id,
+					},
+					style: {
+						color: fgColor,
+						bgcolor: bgColorOrange,
 					},
 				},
 			],
@@ -102,8 +131,20 @@ exports.initPresets = function () {
 					type: 'relayState',
 					options: {
 						relay: RELAY_NR[input].id,
-						fg: this.rgb(255, 255, 255),
-						bg: this.rgb(255, 0, 0),
+					},
+					style: {
+						color: fgColor,
+						bgcolor: bgColorRed,
+					},
+				},
+				{
+					type: 'relayPulse',
+					options: {
+						relay: RELAY_NR[input].id,
+					},
+					style: {
+						color: fgColor,
+						bgcolor: bgColorOrange,
 					},
 				},
 			],
@@ -131,11 +172,13 @@ exports.initPresets = function () {
 			],
 			feedbacks: [
 				{
-					type: 'relayState',
+					type: 'relayPulse',
 					options: {
 						relay: RELAY_NR[input].id,
-						fg: this.rgb(255, 255, 255),
-						bg: this.rgb(255, 0, 0),
+					},
+					style: {
+						color: fgColor,
+						bgcolor: bgColorOrange,
 					},
 				},
 			],
@@ -155,8 +198,10 @@ exports.initPresets = function () {
 		feedbacks: [
 			{
 				type: 'digitalInputState',
-				fg: this.rgb(255, 255, 255),
-				bg: this.rgb(0, 255, 0),
+				style: {
+					color: fgColor,
+					bgcolor: bgColorGreen,
+				},
 			},
 		],
 	})

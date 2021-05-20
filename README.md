@@ -13,3 +13,7 @@ See HELP.md and LICENSE
 - First release
 - Added Feedbacks
 - Updated / New presets with feedbacks
+
+**V1.0.1**
+
+- Converted Feedbacks to Boolean Feedbacks for more flexibility
