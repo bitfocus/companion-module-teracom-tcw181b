@@ -62,21 +62,25 @@ class TeracomInstance extends instance_skel {
 		this.config.username = this.config.username
 		this.config.password = this.config.password
 		this.updateVariableDefinitions = updateVariableDefinitions
+	}
 
-		this.addUpgradeToBooleanFeedbackScript({
-			relayState: {
-				fg: 'color',
-				bg1: 'bgcolor',
-			},
-			relayPulse: {
-				fg: 'color',
-				bg2: 'bgcolor',
-			},
-			digitalInputState: {
-				fg: 'color',
-				bg: 'bgcolor',
-			},
-		})
+	static GetUpgradeScripts() {
+		return [
+			instance_skel.CreateConvertToBooleanFeedbackUpgradeScript({
+				relayState: {
+					fg: 'color',
+					bg1: 'bgcolor',
+				},
+				relayPulse: {
+					fg: 'color',
+					bg2: 'bgcolor',
+				},
+				digitalInputState: {
+					fg: 'color',
+					bg: 'bgcolor',
+				},
+			}),
+		]
 	}
 
 	// Init module
