@@ -1,6 +1,6 @@
 {
-  "name": "teracom-tcw181b",
-	"version": "1.0.2",
+	"name": "teracom-tcw181b",
+	"version": "1.0.3",
 	"api_version": "0.1.2",
 	"description": "Teracom TCW181b Relay",
 	"keywords": [
